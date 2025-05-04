@@ -33,9 +33,9 @@ interface Company {
   secondary_color?: string | null;
   place_id?: string | null;
   biz_id?: string | number | null;
-  slug?: string | null;
+  // slug?: string | null; // Slug is NOT selected in getStaticProps for now
   site_company_insights_description?: string | null;
-  // Add any other fields from your select statement in getStaticProps
+  // Add any other fields you ARE selecting below
 }
 
 
@@ -51,7 +51,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     .from('companies')
     .select('biz_id::text') // Select biz_id as text
     .not('biz_id', 'is', null)
-    // .limit(10); // Remember to LIMIT during development! Remove for full build.
+    // .limit(10); // REMEMBER TO LIMIT DURING DEVELOPMENT FOR FASTER BUILDS! Remove for full build.
 
   if (error) {
     console.error('Error fetching biz_ids:', error);
@@ -71,7 +71,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps, { biz_id: string }> = async ({ params }) => {
-  const biz_id = params?.biz_id;
+  const biz_id = params?.biz_id as string; // Cast to string
   console.log(`Workspaceing data for biz_id: ${biz_id}`);
 
   if (!biz_id) {
@@ -79,21 +79,22 @@ export const getStaticProps: GetStaticProps<PageProps, { biz_id: string }> = asy
        return { notFound: true };
   }
 
-  // Fetch company data using biz_id
+  // Fetch company data using biz_id - SLUG IS REMOVED FROM SELECT
   const { data: company, error: companyError } = await supabase
     .from('companies')
     .select(`
       name, phone, city, state, full_address, latitude, longitude,
       rating, reviews, working_hours, logo, logo_override, facebook,
       instagram, reviews_link, site_company_insights_founded_year,
-      primary_color, secondary_color, place_id, biz_id, slug,
+      primary_color, secondary_color, place_id, biz_id,
       site_company_insights_description
-    `) // Select needed columns
+    `) // SLUG REMOVED HERE
     .eq('biz_id', biz_id)
     .single();
 
   if (companyError || !company) {
     console.error(`Error fetching company data for biz_id ${biz_id}:`, companyError);
+    // console.error('Full error object:', JSON.stringify(companyError, null, 2)); // More detailed error log if needed
     return { notFound: true };
   }
   console.log(`Found company: ${company.name}`);
@@ -110,7 +111,7 @@ export const getStaticProps: GetStaticProps<PageProps, { biz_id: string }> = asy
       .eq(link_column_for_reviews, link_id_for_reviews)
       .eq('stars', 5)
       .order('published_at_date', { ascending: false })
-      .limit(5); // Limit reviews fetched
+      .limit(5);
 
     if (reviewsError) console.error('Error fetching reviews:', reviewsError);
     else {
@@ -137,9 +138,6 @@ export const getStaticProps: GetStaticProps<PageProps, { biz_id: string }> = asy
 // --- Page Component ---
 const CompanyPage: NextPage<PageProps> = ({ company, reviews, logoUrl }) => {
   if (!company) {
-    // This case handles fallback: 'blocking' where props might be undefined
-    // during generation, or if getStaticProps returned notFound.
-    // You could show a loading spinner or a proper 404 component here.
     return <div>Loading... or Company Not Found</div>;
   }
 
@@ -164,30 +162,49 @@ const CompanyPage: NextPage<PageProps> = ({ company, reviews, logoUrl }) => {
         <p>City: {company.city ?? 'N/A'}</p>
         <p>State: {company.state ?? 'N/A'}</p>
         <p>Phone: {company.phone ?? 'N/A'}</p>
-        <p>Rating: {company.rating ?? 'N/A'} ({company.reviews ?? 0} reviews)</p>
+        <p>
+          Rating: {company.rating ?? 'N/A'} ({company.reviews ?? 0} reviews)
+        </p>
         <p>Logo URL used: {logoUrl ?? 'None (Using Text or Placeholder)'}</p>
         <p>Biz ID for this page: {company.biz_id}</p>
-
         {/* Basic Review Display */}
         {reviews && reviews.length >= 3 && ( // Only show if 3 or more 5-star reviews fetched
           <div className="mt-6">
-            <h2 className="text-2xl font-semibold mb-2">Recent 5-Star Reviews</h2>
+            <h2 className="text-2xl font-semibold mb-2">
+              Recent 5-Star Reviews
+            </h2>
             <ul className="space-y-4">
               {reviews.map((review) => (
-                <li key={review.review_id ?? Math.random()} className="border p-3 rounded shadow-sm">
-                  <p><strong>{review.reviewer_name ?? 'Reviewer'}</strong></p>
-                  <p className="my-2">"{review.text ?? '-'}"</p>
-                  {review.published_at_date && <p className="text-sm text-gray-600">({new Date(review.published_at_date).toLocaleDateString()})</p>}
+                <li
+                  key={review.review_id ?? Math.random()} // Use unique key
+                  className="border p-3 rounded shadow-sm"
+                >
+                  <p>
+                    <strong>{review.reviewer_name ?? "Reviewer"}</strong>
+                  </p>
+                  <p className="my-2">"{review.text ?? "-"}"</p>
+                  {review.published_at_date && (
+                    <p className="text-sm text-gray-600">
+                      (
+                      {new Date(
+                        review.published_at_date
+                      ).toLocaleDateString()}
+                      )
+                    </p>
+                  )}
                 </li>
               ))}
             </ul>
           </div>
         )}
-         {(!reviews || reviews.length < 3) && <p className="mt-6">See our reviews on Google!</p>} {/* Fallback text */}
+        {(!reviews || reviews.length < 3) && (
+          <p className="mt-6">See our reviews on Google!</p>
+        )}{" "}
+        {/* Fallback text */}
       </main>
        {/* --- End of basic structure --- */}
     </>
   );
-}
+};
 
 export default CompanyPage;
