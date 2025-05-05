@@ -73,8 +73,8 @@ export default function LandingPage() {
               <div className="bg-gray-50 p-4 rounded border border-gray-200 mb-4">
                 <p className="font-medium mb-1">Sample opt-in confirmation:</p>
                 <p className="text-gray-700 italic">
-                  "Atlas HVAC: You are now subscribed to receive updates about your service appointments and special offers. 
-                  For help, reply HELP. To stop receiving messages, reply STOP."
+                  &quot;Atlas HVAC: You are now subscribed to receive updates about your service appointments and special offers. 
+                  For help, reply HELP. To stop receiving messages, reply STOP.&quot;
                 </p>
               </div>
               
