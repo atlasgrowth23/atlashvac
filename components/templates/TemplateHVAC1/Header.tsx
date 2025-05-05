@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Phone } from 'lucide-react'; // Using lucide-react icons
 import { Button } from '@/components/ui/button'; // Import shadcn Button
+import { upscaleGoogleAvatar } from '@/lib/logo';
 
 interface HeaderProps {
   companyName: string;
@@ -14,6 +15,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ companyName, logoUrl, phone }) => {
   // Fixed typo: displayMame -> displayName
   const displayName = companyName || 'HVAC Company';
+  const logo = upscaleGoogleAvatar(logoUrl, 400);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -21,15 +23,17 @@ const Header: React.FC<HeaderProps> = ({ companyName, logoUrl, phone }) => {
         {/* Left Side: Logo or Company Name */}
         <div className="mr-4 flex items-center">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            {logoUrl ? (
-              <Image
-                src={logoUrl}
-                alt={`${displayName} Logo`}
-                width={140} // Adjust size as needed
-                height={40} // Adjust height as needed
-                className="h-8 md:h-10 w-auto object-contain" // Added object-contain
-                priority
-              />
+            {logo ? (
+              <div className="relative h-12 w-48">
+                <Image
+                  src={logo}
+                  alt={`${displayName} Logo`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 192px"
+                  className="object-contain"
+                  priority
+                />
+              </div>
             ) : (
               // Maybe style this with primary color later if desired
               <span className="font-bold text-lg sm:inline-block text-foreground">
