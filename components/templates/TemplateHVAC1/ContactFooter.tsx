@@ -1,11 +1,11 @@
 // components/templates/TemplateHVAC1/ContactFooter.tsx
-import React from "react";
-import Link from "next/link";
-import { Facebook, Instagram } from "lucide-react"; // Icons
-import { Button } from "@/components/ui/button"; // Use shadcn Button
-import { Input } from "@/components/ui/input"; // Use shadcn Input (need to add)
-import { Textarea } from "@/components/ui/textarea"; // Use shadcn Textarea (need to add)
-import type { Company } from "../../../pages/[biz_id]"; // Import Company type
+import React from 'react';
+import Link from 'next/link';
+import { Facebook, Instagram } from 'lucide-react'; // Icons
+import { Button } from '@/components/ui/button'; // Use shadcn Button
+import { Input } from '@/components/ui/input'; // Use shadcn Input (need to add)
+import { Textarea } from '@/components/ui/textarea'; // Use shadcn Textarea (need to add)
+import type { Company } from '../../../pages/[biz_id]'; // Import Company type
 
 interface ContactFooterProps {
   company: Company | null; // Receive company data
@@ -13,7 +13,7 @@ interface ContactFooterProps {
 
 const ContactFooter: React.FC<ContactFooterProps> = ({ company }) => {
   const currentYear = new Date().getFullYear();
-  const companyName = company?.name ?? "Your Company Name";
+  const companyName = company?.name ?? 'Your Company Name';
   const phone = company?.phone;
   const fullAddress = company?.full_address; // Or construct from city/state if needed
   const facebookUrl = company?.facebook;
@@ -22,7 +22,7 @@ const ContactFooter: React.FC<ContactFooterProps> = ({ company }) => {
   // Simple form handler placeholder - does nothing for now
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    alert("Contact form submission not implemented yet.");
+    alert('Contact form submission not implemented yet.');
   };
 
   return (
@@ -31,9 +31,7 @@ const ContactFooter: React.FC<ContactFooterProps> = ({ company }) => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Column 1: Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-3">
-              {companyName}
-            </h3>
+            <h3 className="text-lg font-semibold text-white mb-3">{companyName}</h3>
             {fullAddress && <p className="mb-2">{fullAddress}</p>}
             {phone && (
               <p className="mb-2">
@@ -47,9 +45,7 @@ const ContactFooter: React.FC<ContactFooterProps> = ({ company }) => {
 
           {/* Column 2: Placeholder Contact Form */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-3">
-              Contact Us
-            </h3>
+            <h3 className="text-lg font-semibold text-white mb-3">Contact Us</h3>
             <form onSubmit={handleFormSubmit} className="space-y-3">
               {/* Add Input and Textarea via shadcn CLI if not already done */}
               {/* npx shadcn@latest add input textarea */}
@@ -71,7 +67,7 @@ const ContactFooter: React.FC<ContactFooterProps> = ({ company }) => {
                 required
               />
               <Button type="submit" variant="secondary" size="sm">
-                {" "}
+                {' '}
                 {/* Use shadcn Button */}
                 Send Message (Disabled)
               </Button>
@@ -80,9 +76,7 @@ const ContactFooter: React.FC<ContactFooterProps> = ({ company }) => {
 
           {/* Column 3: Social Links / Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-3">
-              Connect With Us
-            </h3>
+            <h3 className="text-lg font-semibold text-white mb-3">Connect With Us</h3>
             <div className="flex space-x-4">
               {facebookUrl && (
                 <a
