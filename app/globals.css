@@ -2,6 +2,73 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Template styles */
+/* HVAC1 Template specific styles */
+.template-hvac1 {
+  /* Typography */
+  --hvac1-heading-font: 'Inter', sans-serif;
+  --hvac1-body-font: 'Inter', sans-serif;
+  
+  /* Section spacing */
+  --hvac1-section-padding-y: 4rem;
+  --hvac1-section-padding-x: 1rem;
+  
+  /* Colors can be overridden by company data */
+  --hvac1-primary: #2563EB;
+  --hvac1-secondary: #F3F4F6;
+  --hvac1-dark: #1E293B;
+  --hvac1-light: #F8FAFC;
+  --hvac1-accent: #3B82F6;
+  
+  /* Component styling */
+  --hvac1-border-radius: 0.5rem;
+  --hvac1-card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Style classes that can be used across templates */
+.section-title {
+  @apply text-3xl md:text-4xl font-bold mb-6 text-center;
+}
+
+.section-subtitle {
+  @apply text-xl md:text-2xl font-semibold mb-4;
+}
+
+.template-section {
+  @apply py-16 md:py-24;
+}
+
+/* Hover effects for buttons and cards */
+.hover-lift {
+  @apply transition-transform duration-300 hover:-translate-y-1;
+}
+
+.hover-glow {
+  @apply transition-all duration-300 hover:shadow-lg;
+}
+
+/* Service card styling */
+.service-card {
+  @apply bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300;
+}
+
+/* Review card styling */
+.review-card {
+  @apply bg-white p-6 rounded-lg shadow-md mb-4;
+}
+
+/* Hero section enhancements */
+.hero-content {
+  @apply container mx-auto px-4 text-center z-10 relative;
+}
+
+.hero-title {
+  @apply text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4;
+}
+
+.hero-subtitle {
+  @apply text-lg sm:text-xl md:text-2xl mb-8 max-w-3xl mx-auto;
+}
 
 
 @layer base {
