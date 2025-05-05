@@ -1,11 +1,8 @@
 // components/templates/TemplateHVAC1/Services.tsx
 import React from 'react';
 import { 
-  Thermometer, 
-  Wrench, 
   Snowflake, 
   Fan, 
-  ShieldCheck, 
   Wind, 
   Gauge, 
   Clock,
@@ -74,9 +71,8 @@ const Services: React.FC<ServicesProps> = ({ company }) => {
   const primaryColor = company?.primary_color || defaultPrimary;
   const secondaryColor = company?.secondary_color || defaultSecondary;
   
-  // Determine text color for primary and secondary backgrounds
+  // Determine text color for primary background
   const primaryTextColor = isLightColor(primaryColor) ? 'text-gray-800' : 'text-white';
-  const secondaryTextColor = isLightColor(secondaryColor) ? 'text-gray-800' : 'text-white';
   
   return (
     <section id="services" className="template-section py-16 bg-gradient-to-b from-blue-50 to-white">

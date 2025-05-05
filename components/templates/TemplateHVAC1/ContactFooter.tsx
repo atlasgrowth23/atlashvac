@@ -1,6 +1,5 @@
 // components/templates/TemplateHVAC1/ContactFooter.tsx
 import React from 'react';
-import Link from 'next/link';
 import { Facebook, Instagram } from 'lucide-react'; // Icons
 import { Button } from '@/components/ui/button'; // Use shadcn Button
 import { Input } from '@/components/ui/input'; // Use shadcn Input (need to add)

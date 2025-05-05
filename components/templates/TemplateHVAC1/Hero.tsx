@@ -17,7 +17,6 @@ const Hero: React.FC<HeroProps> = ({ company }) => {
   const rating = company?.rating;
   const reviewsCount = company?.reviews;
   const primaryColor = company?.primary_color || '#2563EB'; // Default blue
-  const secondaryColor = company?.secondary_color || '#F3F4F6'; // Default light gray
 
   // Conditional rendering logic for rating badge
   const showRatingBadge =

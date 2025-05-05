@@ -1,9 +1,8 @@
 // components/shared/Layout.tsx
-import React, { useEffect } from 'react';
+import React from 'react';
 import Header from '../templates/TemplateHVAC1/Header';
 import ContactFooter from '../templates/TemplateHVAC1/ContactFooter';
 import type { Company } from '../../pages/[biz_id]';
-import Head from 'next/head';
 
 interface LayoutProps {
   children: React.ReactNode;
