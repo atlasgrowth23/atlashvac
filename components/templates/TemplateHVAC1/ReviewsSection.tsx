@@ -108,7 +108,7 @@ const ReviewsSection: React.FC<ReviewsSectionProps> = ({ reviews, company }) => 
                 <div className={`relative z-10 ${primaryTextColor}`}>
                   <div className="mb-6">
                     <p className="text-lg md:text-xl font-medium mb-6 italic leading-relaxed">
-                      "{reviews[activeIndex]?.text ? truncateText(reviews[activeIndex].text, 200) : "Excellent service and professionalism."}"
+                      &quot;{reviews[activeIndex]?.text ? truncateText(reviews[activeIndex].text, 200) : &quot;Excellent service and professionalism.&quot;}&quot;
                     </p>
                     <div className="flex items-center">
                       <div className="flex text-yellow-300 mr-2">
@@ -116,7 +116,7 @@ const ReviewsSection: React.FC<ReviewsSectionProps> = ({ reviews, company }) => 
                           <Star key={i} size={16} fill="currentColor" />
                         ))}
                       </div>
-                      <span className="font-semibold">{reviews[activeIndex]?.reviewer_name || "Valued Customer"}</span>
+                      <span className="font-semibold">{reviews[activeIndex]?.reviewer_name || &quot;Valued Customer&quot;}</span>
                     </div>
                     {reviews[activeIndex]?.published_at_date && (
                       <p className="text-sm opacity-80 mt-1">
@@ -168,7 +168,7 @@ const ReviewsSection: React.FC<ReviewsSectionProps> = ({ reviews, company }) => 
         ) : (
           <div className="text-center text-gray-600 max-w-xl mx-auto p-8 bg-white rounded-lg shadow-sm">
             <Quote size={40} className="text-gray-300 mx-auto mb-4" />
-            <p className="text-lg italic">"{name} is committed to customer satisfaction."</p>
+            <p className="text-lg italic">&quot;{name} is committed to customer satisfaction.&quot;</p>
             <p className="mt-3">We value your feedback and strive to provide the best service possible.</p>
           </div>
         )}

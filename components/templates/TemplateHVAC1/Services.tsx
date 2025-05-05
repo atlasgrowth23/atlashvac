@@ -93,7 +93,7 @@ const Services: React.FC<ServicesProps> = ({ company }) => {
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className={`flex-1 ${primaryTextColor}`}>
               <h3 className="text-2xl md:text-3xl font-bold mb-3">
-                {name}'s Summer AC Services
+                {name}&apos;s Summer AC Services
               </h3>
               <p className="text-lg opacity-90">
                 Ensure your comfort during the hottest days of the year
@@ -209,7 +209,7 @@ const Services: React.FC<ServicesProps> = ({ company }) => {
                 </svg>
               </div>
               <h4 className="text-lg font-semibold mb-2">Satisfaction Guaranteed</h4>
-              <p className="text-gray-600">Our work isn't done until you're 100% satisfied with the results.</p>
+              <p className="text-gray-600">Our work isn&apos;t done until you&apos;re 100% satisfied with the results.</p>
             </div>
           </div>
         </div>
