@@ -108,7 +108,7 @@ const ReviewsSection: React.FC<ReviewsSectionProps> = ({ reviews, company }) => 
                 <div className={`relative z-10 ${primaryTextColor}`}>
                   <div className="mb-6">
                     <p className="text-lg md:text-xl font-medium mb-6 italic leading-relaxed">
-                      &quot;{reviews[activeIndex]?.text ? truncateText(reviews[activeIndex].text, 200) : &quot;Excellent service and professionalism.&quot;}&quot;
+                      &quot;{reviews[activeIndex]?.text ? truncateText(reviews[activeIndex].text, 200) : 'Excellent service and professionalism.'}&quot;
                     </p>
                     <div className="flex items-center">
                       <div className="flex text-yellow-300 mr-2">
