@@ -4,7 +4,7 @@ import { Facebook, Instagram } from 'lucide-react'; // Icons
 import { Button } from '@/components/ui/button'; // Use shadcn Button
 import { Input } from '@/components/ui/input'; // Use shadcn Input (need to add)
 import { Textarea } from '@/components/ui/textarea'; // Use shadcn Textarea (need to add)
-import type { Company } from '../../../pages/[biz_id]'; // Import Company type
+import type { Company } from '../../../pages/[slug]'; // Import Company type
 
 interface ContactFooterProps {
   company: Company | null; // Receive company data

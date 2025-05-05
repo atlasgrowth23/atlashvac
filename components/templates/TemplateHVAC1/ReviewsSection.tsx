@@ -1,7 +1,7 @@
 // components/templates/TemplateHVAC1/ReviewsSection.tsx
 import React, { useState } from 'react';
 import { Star, ArrowLeft, ArrowRight, Quote } from 'lucide-react';
-import type { Company, Review } from '../../../pages/[biz_id]';
+import type { Company, Review } from '../../../pages/[slug]';
 
 interface ReviewsSectionProps {
   reviews: Review[];

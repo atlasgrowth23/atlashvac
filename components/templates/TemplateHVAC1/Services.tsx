@@ -8,7 +8,7 @@ import {
   Clock,
   AlertCircle
 } from 'lucide-react';
-import type { Company } from '../../../pages/[biz_id]';
+import type { Company } from '../../../pages/[slug]';
 
 // Define the summer-focused services with detailed descriptions
 const summerServices = [

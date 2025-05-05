@@ -1,6 +1,6 @@
 // components/templates/TemplateHVAC1/LocationMap.tsx
 import React from 'react';
-import type { Company } from '../../../pages/[biz_id]';
+import type { Company } from '../../../pages/[slug]';
 
 interface LocationMapProps {
   company: Company | null;

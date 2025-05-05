@@ -2,7 +2,7 @@
 import React from 'react';
 import { Star, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button'; // Use shadcn Button
-import type { Company } from '../../../pages/[biz_id]';
+import type { Company } from '../../../pages/[slug]';
 
 interface HeroProps {
   company: Company | null;

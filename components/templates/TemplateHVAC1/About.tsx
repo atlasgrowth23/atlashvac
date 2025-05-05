@@ -1,7 +1,7 @@
 // components/templates/TemplateHVAC1/About.tsx
 import React from 'react';
 // VERIFY THIS IMPORT PATH IS CORRECT FOR YOUR STRUCTURE
-import type { Company } from '../../../pages/[biz_id]';
+import type { Company } from '../../../pages/[slug]';
 
 interface AboutProps {
   company: Company | null;
