@@ -2,7 +2,7 @@
 import React from 'react';
 import Header from '../templates/TemplateHVAC1/Header';
 import ContactFooter from '../templates/TemplateHVAC1/ContactFooter';
-import type { Company } from '../../pages/[biz_id]';
+import type { Company } from '../../pages/[slug]';
 
 interface LayoutProps {
   children: React.ReactNode;
